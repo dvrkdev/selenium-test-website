@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selenium Testing Playground</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    
+    <!-- Bootstrap 5 JS Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧪</text></svg>">
+    
+    <style>
+        /* No custom CSS as per requirements - using only Bootstrap classes */
+    </style>
+</head>
+<body class="bg-light">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <span class="fs-4">🧪</span> Selenium Testing Playground
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#forms">Forms</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#interactive">Interactive</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tables">Tables</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#alerts">Alerts</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="p-5 bg-white rounded-3 shadow">
+                    <h1 class="display-4 mb-3">Selenium Testing Playground</h1>
+                    <p class="lead mb-4">This page contains various UI elements for testing Selenium scripts. All styling is done with Bootstrap classes - no custom CSS.</p>
+                    <div class="alert alert-info">
+                        <h5 class="alert-heading">Testing Instructions</h5>
+                        <ul class="mb-0">
+                            <li>Test form submissions and validations</li>
+                            <li>Test modal dialogs and popups</li>
+                            <li>Test dynamic content loading</li>
+                            <li>Test table interactions and sorting</li>
+                            <li>Test alert and toast notifications</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Forms Section -->
+        <div class="row mb-5" id="forms">
+            <div class="col-12">
+                <h2 class="border-bottom pb-2 mb-4">Form Testing</h2>
+            </div>
+            
+            <!-- Registration Form -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Registration Form</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="registrationForm">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+                                <div class="invalid-feedback" id="nameError">Please enter your name.</div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+                                <div class="invalid-feedback" id="emailError">Please enter a valid email address.</div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" placeholder="Enter password" required>
+                                <div class="invalid-feedback" id="passwordError">Password must be at least 6 characters.</div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Gender</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+                                    <label class="form-check-label" for="male">Male</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                                    <label class="form-check-label" for="female">Female</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" id="other" value="other">
+                                    <label class="form-check-label" for="other">Other</label>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Interests</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="automation" value="automation">
+                                    <label class="form-check-label" for="automation">Test Automation</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="webTesting" value="webTesting">
+                                    <label class="form-check-label" for="webTesting">Web Testing</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="apiTesting" value="apiTesting">
+                                    <label class="form-check-label" for="apiTesting">API Testing</label>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="country" class="form-label">Country</label>
+                                <select class="form-select" id="country">
+                                    <option value="">Select a country</option>
+                                    <option value="us">United States</option>
+                                    <option value="uk">United Kingdom</option>
+                                    <option value="ca">Canada</option>
+                                    <option value="au">Australia</option>
+                                    <option value="in">India</option>
+                                </select>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary w-100" id="submitBtn">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Form Results -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">Form Submission Results</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-warning" id="formResultsPlaceholder">
+                            No form submission yet. Fill out the registration form and click submit to see results here.
+                        </div>
+                        <div id="formResults" class="d-none">
+                            <h6>Submitted Data:</h6>
+                            <ul class="list-group mb-3" id="resultsList">
+                                <!-- Results will be populated by jQuery -->
+                            </ul>
+                            <div class="alert alert-success" id="successMessage"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Elements Section -->
+        <div class="row mb-5" id="interactive">
+            <div class="col-12">
+                <h2 class="border-bottom pb-2 mb-4">Interactive Elements</h2>
+            </div>
+            
+            <!-- Modal Trigger -->
+            <div class="col-md-4 mb-4">
+                <div class="card shadow">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="mb-0">Modal Dialog</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <p class="card-text">Click the button below to open a modal dialog. Test modal interactions with Selenium.</p>
+                        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Open Modal
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Dynamic Content -->
+            <div class="col-md-4 mb-4">
+                <div class="card shadow">
+                    <div class="card-header bg-warning text-dark">
+                        <h5 class="mb-0">Dynamic Content</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <p class="card-text">Click the button to load content dynamically.</p>
+                        <button type="button" class="btn btn-warning" id="loadContentBtn">Load Content</button>
+                        <div class="mt-3" id="dynamicContent">
+                            <div class="alert alert-secondary">Content will appear here.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tabs -->
+            <div class="col-md-4 mb-4">
+                <div class="card shadow">
+                    <div class="card-header bg-danger text-white">
+                        <h5 class="mb-0">Tab Navigation</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button">Home</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button">Profile</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button">Contact</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content p-3 border border-top-0" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel">
+                                <h6>Home Tab Content</h6>
+                                <p>This is the home tab content. Test tab switching with Selenium.</p>
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel">
+                                <h6>Profile Tab Content</h6>
+                                <p>This is the profile tab content. Users can switch between tabs.</p>
+                            </div>
+                            <div class="tab-pane fade" id="contact" role="tabpanel">
+                                <h6>Contact Tab Content</h6>
+                                <p>This is the contact tab content. Each tab has different content.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tables Section -->
+        <div class="row mb-5" id="tables">
+            <div class="col-12">
+                <h2 class="border-bottom pb-2 mb-4">Table Testing</h2>
+            </div>
+            
+            <div class="col-12">
+                <div class="card shadow">
+                    <div class="card-header bg-secondary text-white">
+                        <h5 class="mb-0">User Data Table</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Country</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="userTable">
+                                    <!-- Table rows will be populated by jQuery -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <div>
+                                <button class="btn btn-sm btn-outline-primary" id="addRowBtn">Add New Row</button>
+                                <button class="btn btn-sm btn-outline-danger" id="clearTableBtn">Clear Table</button>
+                            </div>
+                            <div class="text-muted">
+                                <span id="rowCount">0</span> rows in table
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alerts & Toasts Section -->
+        <div class="row mb-5" id="alerts">
+            <div class="col-12">
+                <h2 class="border-bottom pb-2 mb-4">Alerts & Notifications</h2>
+            </div>
+            
+            <div class="col-md-6 mb-4">
+                <div class="card shadow">
+                    <div class="card-header bg-dark text-white">
+                        <h5 class="mb-0">Bootstrap Alerts</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                            This is a primary alert—check it out!
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            This is a success alert—check it out!
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            This is a warning alert—check it out!
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            This is a danger alert—check it out!
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                        <button class="btn btn-dark w-100" id="showRandomAlert">Show Random Alert</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 mb-4">
+                <div class="card shadow">
+                    <div class="card-header bg-dark text-white">
+                        <h5 class="mb-0">Toast Notifications</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="toast-container position-relative">
+                            <div class="toast show" role="alert" id="toast1">
+                                <div class="toast-header">
+                                    <strong class="me-auto">Information</strong>
+                                    <small>Just now</small>
+                                    <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                                </div>
+                                <div class="toast-body">
+                                    This is a toast notification. It will disappear after a few seconds or when closed.
+                                </div>
+                            </div>
+                            
+                            <div class="toast mt-3" role="alert" id="toast2">
+                                <div class="toast-header">
+                                    <strong class="me-auto">Success</strong>
+                                    <small>2 seconds ago</small>
+                                    <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                                </div>
+                                <div class="toast-body">
+                                    Operation completed successfully!
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-dark w-100 mt-3" id="showToastBtn">Show New Toast</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card shadow">
+                    <div class="card-body text-center">
+                        <h5>Selenium Testing Playground</h5>
+                        <p class="text-muted">Use this page to practice and test your Selenium automation scripts.</p>
+                        <div>
+                            <button class="btn btn-outline-primary" id="resetPageBtn">Reset Page</button>
+                            <button class="btn btn-outline-secondary" id="showAllToastsBtn">Show All Toasts</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Test Modal Dialog</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>This is a modal dialog for testing with Selenium. You can test:</p>
+                    <ul>
+                        <li>Modal opening and closing</li>
+                        <li>Form inside modal</li>
+                        <li>Button clicks inside modal</li>
+                    </ul>
+                    <div class="mb-3">
+                        <label for="modalInput" class="form-label">Enter text in modal:</label>
+                        <input type="text" class="form-control" id="modalInput" placeholder="Type something...">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="modalActionBtn">Perform Action</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container for dynamically created toasts -->
+    <div class="toast-container position-fixed top-0 end-0 p-3" id="toastContainer">
+        <!-- Dynamic toasts will be added here -->
+    </div>
+
+    <script>
+        // Wait for DOM to be fully loaded
+        $(document).ready(function() {
+            
+            // Initialize table with sample data
+            initializeTable();
+            
+            // Form submission handler
+            $('#registrationForm').on('submit', function(e) {
+                e.preventDefault();
+                
+                // Basic validation
+                let isValid = true;
+                
+                // Name validation
+                if ($('#name').val().trim() === '') {
+                    $('#name').addClass('is-invalid');
+                    isValid = false;
+                } else {
+                    $('#name').removeClass('is-invalid');
+                }
+                
+                // Email validation
+                const email = $('#email').val();
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    $('#email').addClass('is-invalid');
+                    isValid = false;
+                } else {
+                    $('#email').removeClass('is-invalid');
+                }
+                
+                // Password validation
+                if ($('#password').val().length < 6) {
+                    $('#password').addClass('is-invalid');
+                    isValid = false;
+                } else {
+                    $('#password').removeClass('is-invalid');
+                }
+                
+                if (!isValid) {
+                    return;
+                }
+                
+                // Collect form data
+                const formData = {
+                    name: $('#name').val(),
+                    email: $('#email').val(),
+                    password: $('#password').val(),
+                    gender: $('input[name="gender"]:checked').val() || 'Not specified',
+                    interests: [],
+                    country: $('#country').val()
+                };
+                
+                // Collect checked interests
+                $('input[type="checkbox"]:checked').each(function() {
+                    formData.interests.push($(this).val());
+                });
+                
+                if (formData.interests.length === 0) {
+                    formData.interests.push('None selected');
+                }
+                
+                // Display results
+                $('#formResultsPlaceholder').addClass('d-none');
+                $('#formResults').removeClass('d-none');
+                
+                // Clear previous results
+                $('#resultsList').empty();
+                
+                // Add results to list
+                for (const key in formData) {
+                    let value = formData[key];
+                    if (Array.isArray(value)) {
+                        value = value.join(', ');
+                    }
+                    
+                    $('#resultsList').append(`
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span class="font-weight-bold">${key.charAt(0).toUpperCase() + key.slice(1)}:</span>
+                            <span>${value}</span>
+                        </li>
+                    `);
+                }
+                
+                // Show success message
+                const successMsg = `Registration successful! Welcome, ${formData.name}.`;
+                $('#successMessage').text(successMsg);
+                
+                // Add to table
+                addTableRow(formData);
+                
+                // Show toast notification
+                showToast('Registration Successful', `User ${formData.name} has been registered.`, 'success');
+                
+                // Reset form
+                $('#registrationForm')[0].reset();
+            });
+            
+            // Load dynamic content
+            $('#loadContentBtn').on('click', function() {
+                const content = `
+                    <div class="alert alert-success">
+                        <h6>Content Loaded Successfully!</h6>
+                        <p>This content was loaded dynamically at ${new Date().toLocaleTimeString()}.</p>
+                        <p>You can test dynamic content loading with Selenium.</p>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-outline-success" id="dynamicBtn">Dynamic Button</button>
+                        <button class="btn btn-outline-info" id="anotherDynamicBtn">Another Dynamic Button</button>
+                    </div>
+                `;
+                
+                $('#dynamicContent').html(content);
+                
+                // Add event handlers to dynamically created buttons
+                $(document).on('click', '#dynamicBtn', function() {
+                    showToast('Dynamic Button Clicked', 'You clicked a dynamically created button!', 'info');
+                });
+                
+                $(document).on('click', '#anotherDynamicBtn', function() {
+                    $('#dynamicContent').append('<div class="alert alert-info mt-2">Another action performed!</div>');
+                });
+            });
+            
+            // Modal action button
+            $('#modalActionBtn').on('click', function() {
+                const inputText = $('#modalInput').val();
+                if (inputText) {
+                    showToast('Modal Action', `You entered: "${inputText}"`, 'primary');
+                    $('#exampleModal').modal('hide');
+                } else {
+                    alert('Please enter some text in the modal input field.');
+                }
+            });
+            
+            // Show random alert
+            $('#showRandomAlert').on('click', function() {
+                const alerts = ['primary', 'success', 'warning', 'danger', 'info'];
+                const randomAlert = alerts[Math.floor(Math.random() * alerts.length)];
+                
+                const alertHtml = `
+                    <div class="alert alert-${randomAlert} alert-dismissible fade show" role="alert">
+                        This is a random ${randomAlert} alert generated at ${new Date().toLocaleTimeString()}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                `;
+                
+                // Add alert to the alerts card
+                $(this).before(alertHtml);
+            });
+            
+            // Show toast button
+            $('#showToastBtn').on('click', function() {
+                const toastTypes = ['primary', 'success', 'warning', 'danger', 'info', 'dark'];
+                const randomType = toastTypes[Math.floor(Math.random() * toastTypes.length)];
+                const titles = ['Notification', 'Update', 'Alert', 'Message', 'Info'];
+                const randomTitle = titles[Math.floor(Math.random() * titles.length)];
+                
+                showToast(randomTitle, `This is a ${randomType} toast notification.`, randomType);
+            });
+            
+            // Show all toasts button
+            $('#showAllToastsBtn').on('click', function() {
+                // Show existing toasts
+                $('.toast').toast('show');
+                
+                // Also show a new one
+                showToast('All Toasts Activated', 'All toast notifications are now visible.', 'info');
+            });
+            
+            // Add table row button
+            $('#addRowBtn').on('click', function() {
+                const names = ['Alex Johnson', 'Maria Garcia', 'David Smith', 'Lisa Wang', 'Robert Brown'];
+                const emails = ['alex@test.com', 'maria@test.com', 'david@test.com', 'lisa@test.com', 'robert@test.com'];
+                const countries = ['United States', 'United Kingdom', 'Canada', 'Australia', 'India'];
+                const statuses = ['Active', 'Inactive', 'Pending'];
+                
+                const randomIndex = Math.floor(Math.random() * names.length);
+                
+                const newRow = {
+                    name: names[randomIndex],
+                    email: emails[randomIndex],
+                    country: countries[Math.floor(Math.random() * countries.length)],
+                    status: statuses[Math.floor(Math.random() * statuses.length)]
+                };
+                
+                addTableRow(newRow);
+                showToast('Row Added', `Added ${newRow.name} to the table.`, 'success');
+            });
+            
+            // Clear table button
+            $('#clearTableBtn').on('click', function() {
+                if ($('#userTable tr').length > 0) {
+                    $('#userTable').empty();
+                    updateRowCount();
+                    showToast('Table Cleared', 'All rows have been removed from the table.', 'warning');
+                }
+            });
+            
+            // Reset page button
+            $('#resetPageBtn').on('click', function() {
+                // Reset form
+                $('#registrationForm')[0].reset();
+                $('.form-control').removeClass('is-invalid');
+                
+                // Reset form results
+                $('#formResultsPlaceholder').removeClass('d-none');
+                $('#formResults').addClass('d-none');
+                
+                // Reset dynamic content
+                $('#dynamicContent').html('<div class="alert alert-secondary">Content will appear here.</div>');
+                
+                // Reset table
+                $('#userTable').empty();
+                initializeTable();
+                
+                // Close all toasts
+                $('.toast').toast('hide');
+                
+                // Show confirmation toast
+                showToast('Page Reset', 'The page has been reset to its initial state.', 'info');
+            });
+            
+            // Initialize Bootstrap toasts
+            $('.toast').toast();
+            
+            // Helper function to show toast notifications
+            function showToast(title, message, type = 'info') {
+                const toastId = 'toast-' + Date.now();
+                const toastHtml = `
+                    <div class="toast" role="alert" id="${toastId}" data-bs-delay="5000">
+                        <div class="toast-header bg-${type} text-white">
+                            <strong class="me-auto">${title}</strong>
+                            <small>${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</small>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
+                        </div>
+                        <div class="toast-body">
+                            ${message}
+                        </div>
+                    </div>
+                `;
+                
+                $('#toastContainer').append(toastHtml);
+                const toastElement = document.getElementById(toastId);
+                const toast = new bootstrap.Toast(toastElement);
+                toast.show();
+                
+                // Remove toast from DOM after it's hidden
+                toastElement.addEventListener('hidden.bs.toast', function() {
+                    this.remove();
+                });
+            }
+            
+            // Helper function to initialize the table
+            function initializeTable() {
+                const initialData = [
+                    {name: 'John Doe', email: 'john@test.com', country: 'United States', status: 'Active'},
+                    {name: 'Jane Smith', email: 'jane@test.com', country: 'Canada', status: 'Active'},
+                    {name: 'Sam Wilson', email: 'sam@test.com', country: 'United Kingdom', status: 'Inactive'}
+                ];
+                
+                initialData.forEach(data => addTableRow(data, false));
+                updateRowCount();
+            }
+            
+            // Helper function to add a row to the table
+            function addTableRow(data, animate = true) {
+                const rowCount = $('#userTable tr').length + 1;
+                const statusClass = data.status === 'Active' ? 'text-success' : 
+                                  data.status === 'Inactive' ? 'text-danger' : 'text-warning';
+                
+                const rowHtml = `
+                    <tr ${animate ? 'class="table-primary"' : ''}>
+                        <th scope="row">${rowCount}</th>
+                        <td>${data.name}</td>
+                        <td>${data.email}</td>
+                        <td>${data.country}</td>
+                        <td class="${statusClass}">${data.status}</td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-primary edit-row">Edit</button>
+                            <button class="btn btn-sm btn-outline-danger delete-row">Delete</button>
+                        </td>
+                    </tr>
+                `;
+                
+                $('#userTable').append(rowHtml);
+                updateRowCount();
+                
+                // Remove highlight after animation
+                if (animate) {
+                    setTimeout(() => {
+                        $(`#userTable tr:last`).removeClass('table-primary');
+                    }, 1000);
+                }
+            }
+            
+            // Helper function to update row count
+            function updateRowCount() {
+                const count = $('#userTable tr').length;
+                $('#rowCount').text(count);
+            }
+            
+            // Event delegation for table buttons (since rows are added dynamically)
+            $(document).on('click', '.edit-row', function() {
+                const row = $(this).closest('tr');
+                const name = row.find('td:nth-child(2)').text();
+                showToast('Edit Row', `Editing row for ${name}.`, 'info');
+                
+                // In a real app, you would open a modal or form to edit the row
+                row.addClass('table-warning');
+                setTimeout(() => {
+                    row.removeClass('table-warning');
+                }, 2000);
+            });
+            
+            $(document).on('click', '.delete-row', function() {
+                const row = $(this).closest('tr');
+                const name = row.find('td:nth-child(2)').text();
+                
+                row.addClass('table-danger');
+                
+                if (confirm(`Are you sure you want to delete ${name}?`)) {
+                    row.fadeOut(400, function() {
+                        $(this).remove();
+                        updateRowCount();
+                        showToast('Row Deleted', `${name} has been removed from the table.`, 'danger');
+                    });
+                } else {
+                    row.removeClass('table-danger');
+                }
+            });
+            
+            // Initialize tooltips (if needed)
+            $('[data-bs-toggle="tooltip"]').tooltip();
+        });
+    </script>
+</body>
+</html>
