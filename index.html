@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selenium Testing Playground</title>
-    
+
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    
+
     <!-- Bootstrap 5 JS Bundle (includes Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧪</text></svg>">
-    
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
     <style>
         /* No custom CSS as per requirements - using only Bootstrap classes */
     </style>
 </head>
+
 <body class="bg-light">
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
@@ -56,15 +58,17 @@
             <div class="col-12">
                 <div class="p-5 bg-white rounded-3 shadow">
                     <h1 class="display-4 mb-3">Selenium Testing Playground</h1>
-                    <p class="lead mb-4">This page contains various UI elements for testing Selenium scripts. All styling is done with Bootstrap classes - no custom CSS.</p>
+                    <p class="lead mb-4">A comprehensive web application interface for practicing and validating
+                        Selenium WebDriver automation scripts. This environment simulates real-world web application
+                        scenarios with dynamic content and interactive elements.</p>
                     <div class="alert alert-info">
-                        <h5 class="alert-heading">Testing Instructions</h5>
+                        <h5 class="alert-heading">Testing Objectives</h5>
                         <ul class="mb-0">
-                            <li>Test form submissions and validations</li>
-                            <li>Test modal dialogs and popups</li>
-                            <li>Test dynamic content loading</li>
-                            <li>Test table interactions and sorting</li>
-                            <li>Test alert and toast notifications</li>
+                            <li>Validate form submissions with client-side validation</li>
+                            <li>Test modal dialogs and asynchronous popups</li>
+                            <li>Handle dynamic content loading and AJAX requests</li>
+                            <li>Implement table data extraction and manipulation</li>
+                            <li>Manage alert, toast, and notification systems</li>
                         </ul>
                     </div>
                 </div>
@@ -76,99 +80,161 @@
             <div class="col-12">
                 <h2 class="border-bottom pb-2 mb-4">Form Testing</h2>
             </div>
-            
+
             <!-- Registration Form -->
             <div class="col-md-6 mb-4">
                 <div class="card h-100 shadow">
                     <div class="card-header bg-primary text-white">
-                        <h5 class="mb-0">Registration Form</h5>
+                        <h5 class="mb-0">User Registration</h5>
                     </div>
                     <div class="card-body">
                         <form id="registrationForm">
                             <div class="mb-3">
-                                <label for="name" class="form-label">Full Name</label>
-                                <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
-                                <div class="invalid-feedback" id="nameError">Please enter your name.</div>
+                                <label for="name" class="form-label">Full Name *</label>
+                                <input type="text" class="form-control" id="name" placeholder="Enter your full name"
+                                    required>
+                                <div class="invalid-feedback" id="nameError">Full name must be at least 2 characters and
+                                    contain only letters and spaces.</div>
                             </div>
-                            
+
                             <div class="mb-3">
-                                <label for="email" class="form-label">Email Address</label>
-                                <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
-                                <div class="invalid-feedback" id="emailError">Please enter a valid email address.</div>
+                                <label for="email" class="form-label">Email Address *</label>
+                                <input type="email" class="form-control" id="email" placeholder="jane.doe@example.com"
+                                    required>
+                                <div class="invalid-feedback" id="emailError">Please enter a valid email address (e.g.,
+                                    user@domain.com).</div>
                             </div>
-                            
+
                             <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password" placeholder="Enter password" required>
-                                <div class="invalid-feedback" id="passwordError">Password must be at least 6 characters.</div>
+                                <label for="password" class="form-label">Password *</label>
+                                <input type="password" class="form-control" id="password"
+                                    placeholder="Minimum 8 characters with 1 uppercase letter" required>
+                                <div class="form-text">Password must be at least 8 characters with 1 uppercase letter
+                                    and 1 number.</div>
+                                <div class="invalid-feedback" id="passwordError">Password must be at least 8 characters
+                                    with 1 uppercase letter and 1 number.</div>
                             </div>
-                            
+
                             <div class="mb-3">
-                                <label class="form-label">Gender</label>
+                                <label class="form-label">Gender Identification</label>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+                                    <input class="form-check-input" type="radio" name="gender" id="male" value="male"
+                                        checked>
                                     <label class="form-check-label" for="male">Male</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                                    <input class="form-check-input" type="radio" name="gender" id="female"
+                                        value="female">
                                     <label class="form-check-label" for="female">Female</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" id="other" value="other">
-                                    <label class="form-check-label" for="other">Other</label>
+                                    <input class="form-check-input" type="radio" name="gender" id="nonbinary"
+                                        value="non-binary">
+                                    <label class="form-check-label" for="nonbinary">Non-binary</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" id="preferNot"
+                                        value="prefer-not-to-say">
+                                    <label class="form-check-label" for="preferNot">Prefer not to say</label>
                                 </div>
                             </div>
-                            
+
                             <div class="mb-3">
-                                <label class="form-label">Interests</label>
+                                <label class="form-label">Technical Interests</label>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="automation" value="automation">
-                                    <label class="form-check-label" for="automation">Test Automation</label>
+                                    <input class="form-check-input" type="checkbox" id="webAutomation"
+                                        value="web-automation" checked>
+                                    <label class="form-check-label" for="webAutomation">Web Automation Testing</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="webTesting" value="webTesting">
-                                    <label class="form-check-label" for="webTesting">Web Testing</label>
+                                    <input class="form-check-input" type="checkbox" id="mobileTesting"
+                                        value="mobile-testing">
+                                    <label class="form-check-label" for="mobileTesting">Mobile Application
+                                        Testing</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="apiTesting" value="apiTesting">
-                                    <label class="form-check-label" for="apiTesting">API Testing</label>
+                                    <input class="form-check-input" type="checkbox" id="apiTesting" value="api-testing">
+                                    <label class="form-check-label" for="apiTesting">API & Web Services Testing</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="performance"
+                                        value="performance-testing">
+                                    <label class="form-check-label" for="performance">Performance Testing</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="securityTesting"
+                                        value="security-testing">
+                                    <label class="form-check-label" for="securityTesting">Security Testing</label>
                                 </div>
                             </div>
-                            
+
                             <div class="mb-3">
-                                <label for="country" class="form-label">Country</label>
-                                <select class="form-select" id="country">
-                                    <option value="">Select a country</option>
-                                    <option value="us">United States</option>
-                                    <option value="uk">United Kingdom</option>
-                                    <option value="ca">Canada</option>
-                                    <option value="au">Australia</option>
-                                    <option value="in">India</option>
+                                <label for="country" class="form-label">Country of Residence *</label>
+                                <select class="form-select" id="country" required>
+                                    <option value="">Select your country</option>
+                                    <option value="US">United States</option>
+                                    <option value="GB">United Kingdom</option>
+                                    <option value="CA">Canada</option>
+                                    <option value="AU">Australia</option>
+                                    <option value="DE">Germany</option>
+                                    <option value="FR">France</option>
+                                    <option value="JP">Japan</option>
+                                    <option value="IN">India</option>
+                                    <option value="BR">Brazil</option>
+                                    <option value="ZA">South Africa</option>
+                                </select>
+                                <div class="invalid-feedback" id="countryError">Please select your country of residence.
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="experience" class="form-label">Years of Testing Experience</label>
+                                <select class="form-select" id="experience">
+                                    <option value="0-2">0-2 years</option>
+                                    <option value="3-5" selected>3-5 years</option>
+                                    <option value="6-10">6-10 years</option>
+                                    <option value="10+">10+ years</option>
                                 </select>
                             </div>
-                            
-                            <button type="submit" class="btn btn-primary w-100" id="submitBtn">Register</button>
+
+                            <button type="submit" class="btn btn-primary w-100" id="submitBtn">Create Account</button>
+                            <div class="form-text text-center mt-2">By registering, you agree to our Terms of Service
+                                and Privacy Policy.</div>
                         </form>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Form Results -->
             <div class="col-md-6 mb-4">
                 <div class="card h-100 shadow">
                     <div class="card-header bg-success text-white">
-                        <h5 class="mb-0">Form Submission Results</h5>
+                        <h5 class="mb-0">Registration Summary</h5>
                     </div>
                     <div class="card-body">
                         <div class="alert alert-warning" id="formResultsPlaceholder">
-                            No form submission yet. Fill out the registration form and click submit to see results here.
+                            <i class="bi bi-info-circle"></i> No registration data available. Complete the form and
+                            submit to view your registration summary.
                         </div>
                         <div id="formResults" class="d-none">
-                            <h6>Submitted Data:</h6>
-                            <ul class="list-group mb-3" id="resultsList">
-                                <!-- Results will be populated by jQuery -->
-                            </ul>
-                            <div class="alert alert-success" id="successMessage"></div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h6 class="mb-0">Submitted Registration Details</h6>
+                                <span class="badge bg-success">Verified</span>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-sm table-borderless">
+                                    <tbody id="resultsList">
+                                        <!-- Results will be populated by jQuery -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="alert alert-success mt-3" id="successMessage">
+                                <i class="bi bi-check-circle"></i> <span id="successText"></span>
+                            </div>
+                            <div class="alert alert-info mt-2">
+                                <small><i class="bi bi-clock"></i> Registration timestamp: <span
+                                        id="timestamp"></span></small>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -180,68 +246,107 @@
             <div class="col-12">
                 <h2 class="border-bottom pb-2 mb-4">Interactive Elements</h2>
             </div>
-            
+
             <!-- Modal Trigger -->
             <div class="col-md-4 mb-4">
                 <div class="card shadow">
                     <div class="card-header bg-info text-white">
-                        <h5 class="mb-0">Modal Dialog</h5>
+                        <h5 class="mb-0">Modal Dialog Testing</h5>
                     </div>
                     <div class="card-body text-center">
-                        <p class="card-text">Click the button below to open a modal dialog. Test modal interactions with Selenium.</p>
-                        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Open Modal
+                        <p class="card-text">Test modal interactions including opening, closing, and form handling
+                            within modal contexts.</p>
+                        <button type="button" class="btn btn-info mb-2" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                            <i class="bi bi-window"></i> Open Standard Modal
+                        </button>
+                        <button type="button" class="btn btn-outline-info" id="openDynamicModal">
+                            <i class="bi bi-plus-circle"></i> Open Dynamic Modal
                         </button>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Dynamic Content -->
             <div class="col-md-4 mb-4">
                 <div class="card shadow">
                     <div class="card-header bg-warning text-dark">
-                        <h5 class="mb-0">Dynamic Content</h5>
+                        <h5 class="mb-0">Dynamic Content Loading</h5>
                     </div>
                     <div class="card-body text-center">
-                        <p class="card-text">Click the button to load content dynamically.</p>
-                        <button type="button" class="btn btn-warning" id="loadContentBtn">Load Content</button>
+                        <p class="card-text">Simulate AJAX content loading and test handling of dynamically added
+                            elements.</p>
+                        <div class="btn-group mb-3" role="group">
+                            <button type="button" class="btn btn-warning" id="loadContentBtn">Load User Data</button>
+                            <button type="button" class="btn btn-outline-warning" id="loadProductsBtn">Load
+                                Products</button>
+                        </div>
                         <div class="mt-3" id="dynamicContent">
-                            <div class="alert alert-secondary">Content will appear here.</div>
+                            <div class="alert alert-secondary">
+                                <i class="bi bi-arrow-clockwise"></i> Content will be loaded here dynamically.
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Tabs -->
             <div class="col-md-4 mb-4">
                 <div class="card shadow">
                     <div class="card-header bg-danger text-white">
-                        <h5 class="mb-0">Tab Navigation</h5>
+                        <h5 class="mb-0">Tab Navigation Panel</h5>
                     </div>
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button">Home</button>
+                                <button class="nav-link active" id="dashboard-tab" data-bs-toggle="tab"
+                                    data-bs-target="#dashboard" type="button">Dashboard</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button">Profile</button>
+                                <button class="nav-link" id="reports-tab" data-bs-toggle="tab" data-bs-target="#reports"
+                                    type="button">Reports</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button">Contact</button>
+                                <button class="nav-link" id="settings-tab" data-bs-toggle="tab"
+                                    data-bs-target="#settings" type="button">Settings</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="analytics-tab" data-bs-toggle="tab"
+                                    data-bs-target="#analytics" type="button">Analytics</button>
                             </li>
                         </ul>
                         <div class="tab-content p-3 border border-top-0" id="myTabContent">
-                            <div class="tab-pane fade show active" id="home" role="tabpanel">
-                                <h6>Home Tab Content</h6>
-                                <p>This is the home tab content. Test tab switching with Selenium.</p>
+                            <div class="tab-pane fade show active" id="dashboard" role="tabpanel">
+                                <h6>Application Dashboard</h6>
+                                <p>Overview of testing activities and recent executions. Monitor automation test runs
+                                    and results.</p>
+                                <ul class="small">
+                                    <li>Last test run: 2 hours ago</li>
+                                    <li>Success rate: 94.7%</li>
+                                    <li>Pending tests: 12</li>
+                                </ul>
                             </div>
-                            <div class="tab-pane fade" id="profile" role="tabpanel">
-                                <h6>Profile Tab Content</h6>
-                                <p>This is the profile tab content. Users can switch between tabs.</p>
+                            <div class="tab-pane fade" id="reports" role="tabpanel">
+                                <h6>Test Reports</h6>
+                                <p>Detailed execution reports and historical data. Export test results in multiple
+                                    formats (PDF, CSV, XML).</p>
+                                <button class="btn btn-sm btn-outline-danger">Generate Report</button>
                             </div>
-                            <div class="tab-pane fade" id="contact" role="tabpanel">
-                                <h6>Contact Tab Content</h6>
-                                <p>This is the contact tab content. Each tab has different content.</p>
+                            <div class="tab-pane fade" id="settings" role="tabpanel">
+                                <h6>Configuration Settings</h6>
+                                <p>Configure test parameters, environments, and automation framework settings.</p>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="parallelExecution">
+                                    <label class="form-check-label" for="parallelExecution">Enable parallel
+                                        execution</label>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="analytics" role="tabpanel">
+                                <h6>Test Analytics</h6>
+                                <p>Visualize test metrics, trends, and performance indicators over time.</p>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 85%">85% Pass Rate</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -252,24 +357,43 @@
         <!-- Tables Section -->
         <div class="row mb-5" id="tables">
             <div class="col-12">
-                <h2 class="border-bottom pb-2 mb-4">Table Testing</h2>
+                <h2 class="border-bottom pb-2 mb-4">Data Table Testing</h2>
             </div>
-            
+
             <div class="col-12">
                 <div class="card shadow">
                     <div class="card-header bg-secondary text-white">
-                        <h5 class="mb-0">User Data Table</h5>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">User Management Console</h5>
+                            <div class="d-flex align-items-center">
+                                <div class="input-group input-group-sm me-2" style="width: 200px;">
+                                    <input type="text" class="form-control" placeholder="Search users..."
+                                        id="tableSearch">
+                                    <button class="btn btn-outline-light" type="button">
+                                        <i class="bi bi-search"></i>
+                                    </button>
+                                </div>
+                                <select class="form-select form-select-sm" id="statusFilter" style="width: 150px;">
+                                    <option value="">All Statuses</option>
+                                    <option value="Active">Active</option>
+                                    <option value="Inactive">Inactive</option>
+                                    <option value="Pending">Pending</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-striped table-hover">
                                 <thead>
                                     <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">Country</th>
+                                        <th scope="col">User ID</th>
+                                        <th scope="col">Full Name</th>
+                                        <th scope="col">Email Address</th>
+                                        <th scope="col">Department</th>
+                                        <th scope="col">Location</th>
                                         <th scope="col">Status</th>
+                                        <th scope="col">Join Date</th>
                                         <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
@@ -280,11 +404,18 @@
                         </div>
                         <div class="d-flex justify-content-between align-items-center mt-3">
                             <div>
-                                <button class="btn btn-sm btn-outline-primary" id="addRowBtn">Add New Row</button>
-                                <button class="btn btn-sm btn-outline-danger" id="clearTableBtn">Clear Table</button>
+                                <button class="btn btn-sm btn-outline-primary me-2" id="addRowBtn">
+                                    <i class="bi bi-person-plus"></i> Add User
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger me-2" id="clearTableBtn">
+                                    <i class="bi bi-trash"></i> Clear All
+                                </button>
+                                <button class="btn btn-sm btn-outline-success" id="exportTableBtn">
+                                    <i class="bi bi-download"></i> Export CSV
+                                </button>
                             </div>
                             <div class="text-muted">
-                                <span id="rowCount">0</span> rows in table
+                                Showing <span id="rowCount">0</span> users out of <span id="totalRows">0</span>
                             </div>
                         </div>
                     </div>
@@ -297,79 +428,139 @@
             <div class="col-12">
                 <h2 class="border-bottom pb-2 mb-4">Alerts & Notifications</h2>
             </div>
-            
+
             <div class="col-md-6 mb-4">
                 <div class="card shadow">
                     <div class="card-header bg-dark text-white">
-                        <h5 class="mb-0">Bootstrap Alerts</h5>
+                        <h5 class="mb-0">System Alert Center</h5>
                     </div>
                     <div class="card-body">
                         <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                            This is a primary alert—check it out!
+                            <i class="bi bi-info-circle"></i> <strong>System Update:</strong> Maintenance scheduled for
+                            Saturday, 2:00 AM - 4:00 AM UTC.
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                         </div>
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            This is a success alert—check it out!
+                            <i class="bi bi-check-circle"></i> <strong>Test Suite Completed:</strong> All 247 automated
+                            tests passed successfully.
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                         </div>
                         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                            This is a warning alert—check it out!
+                            <i class="bi bi-exclamation-triangle"></i> <strong>Performance Alert:</strong> Response
+                            times increased by 15% in the last hour.
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                         </div>
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            This is a danger alert—check it out!
+                            <i class="bi bi-x-circle"></i> <strong>Critical Error:</strong> Database connection timeout
+                            on server node 3.
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                         </div>
-                        <button class="btn btn-dark w-100" id="showRandomAlert">Show Random Alert</button>
+                        <div class="alert alert-info alert-dismissible fade show" role="alert">
+                            <i class="bi bi-bell"></i> <strong>New Feature Available:</strong> Parallel test execution
+                            is now enabled.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100" id="showRandomAlert">
+                                    <i class="bi bi-plus-circle"></i> Generate Alert
+                                </button>
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-outline-dark w-100" id="dismissAllAlerts">
+                                    <i class="bi bi-x-octagon"></i> Dismiss All
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-md-6 mb-4">
                 <div class="card shadow">
                     <div class="card-header bg-dark text-white">
-                        <h5 class="mb-0">Toast Notifications</h5>
+                        <h5 class="mb-0">Notification Center</h5>
                     </div>
                     <div class="card-body">
-                        <div class="toast-container position-relative">
+                        <div class="toast-container position-relative" style="min-height: 250px;">
                             <div class="toast show" role="alert" id="toast1">
-                                <div class="toast-header">
-                                    <strong class="me-auto">Information</strong>
-                                    <small>Just now</small>
-                                    <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                                <div class="toast-header bg-primary text-white">
+                                    <strong class="me-auto"><i class="bi bi-chat-left-text"></i> New Message</strong>
+                                    <small>2 min ago</small>
+                                    <button type="button" class="btn-close btn-close-white"
+                                        data-bs-dismiss="toast"></button>
                                 </div>
                                 <div class="toast-body">
-                                    This is a toast notification. It will disappear after a few seconds or when closed.
+                                    Test execution report for Sprint 24 is now available for review.
                                 </div>
                             </div>
-                            
-                            <div class="toast mt-3" role="alert" id="toast2">
-                                <div class="toast-header">
-                                    <strong class="me-auto">Success</strong>
-                                    <small>2 seconds ago</small>
+
+                            <div class="toast mt-3 show" role="alert" id="toast2">
+                                <div class="toast-header bg-success text-white">
+                                    <strong class="me-auto"><i class="bi bi-check-circle"></i> Success</strong>
+                                    <small>5 min ago</small>
+                                    <button type="button" class="btn-close btn-close-white"
+                                        data-bs-dismiss="toast"></button>
+                                </div>
+                                <div class="toast-body">
+                                    User profile updated successfully. Changes have been applied.
+                                </div>
+                            </div>
+
+                            <div class="toast mt-3" role="alert" id="toast3">
+                                <div class="toast-header bg-warning text-dark">
+                                    <strong class="me-auto"><i class="bi bi-exclamation-triangle"></i> Warning</strong>
+                                    <small>12 min ago</small>
                                     <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
                                 </div>
                                 <div class="toast-body">
-                                    Operation completed successfully!
+                                    API response time threshold exceeded for endpoint /api/v2/users.
                                 </div>
                             </div>
                         </div>
-                        <button class="btn btn-dark w-100 mt-3" id="showToastBtn">Show New Toast</button>
+                        <div class="row mt-3">
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100" id="showToastBtn">
+                                    <i class="bi bi-bell"></i> New Notification
+                                </button>
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-outline-dark w-100" id="showAllToastsBtn">
+                                    <i class="bi bi-collection"></i> Show All
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <!-- Footer -->
         <div class="row mb-4">
             <div class="col-12">
                 <div class="card shadow">
                     <div class="card-body text-center">
-                        <h5>Selenium Testing Playground</h5>
-                        <p class="text-muted">Use this page to practice and test your Selenium automation scripts.</p>
-                        <div>
-                            <button class="btn btn-outline-primary" id="resetPageBtn">Reset Page</button>
-                            <button class="btn btn-outline-secondary" id="showAllToastsBtn">Show All Toasts</button>
+                        <h5>Selenium Testing Playground v2.1</h5>
+                        <p class="text-muted mb-3">A production-like web application interface for comprehensive
+                            Selenium WebDriver testing and validation.</p>
+                        <div class="d-flex justify-content-center flex-wrap gap-2">
+                            <button class="btn btn-outline-primary" id="resetPageBtn">
+                                <i class="bi bi-arrow-clockwise"></i> Reset Application State
+                            </button>
+                            <button class="btn btn-outline-secondary" id="simulateErrorBtn">
+                                <i class="bi bi-bug"></i> Simulate Server Error
+                            </button>
+                            <button class="btn btn-outline-info" id="showSessionInfo">
+                                <i class="bi bi-info-square"></i> Session Information
+                            </button>
+                        </div>
+                        <hr class="my-3">
+                        <div class="small text-muted">
+                            <p class="mb-1">© 2023 Quality Assurance Lab. This environment simulates real-world
+                                application scenarios for automation testing practice.</p>
+                            <p class="mb-0">Test Data: <span id="sessionId">Session-</span> | Environment: Staging |
+                                Load Time: <span id="loadTime">0</span>ms</p>
                         </div>
                     </div>
                 </div>
@@ -379,27 +570,60 @@
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Test Modal Dialog</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">User Configuration Panel</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>This is a modal dialog for testing with Selenium. You can test:</p>
+                    <p>This modal dialog simulates a configuration panel. Test modal interactions including:</p>
                     <ul>
-                        <li>Modal opening and closing</li>
-                        <li>Form inside modal</li>
-                        <li>Button clicks inside modal</li>
+                        <li>Form submission within modal context</li>
+                        <li>Dynamic content updates</li>
+                        <li>Modal dismissal and state preservation</li>
+                        <li>Nested interactions and validations</li>
                     </ul>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="modalFirstName" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="modalFirstName" placeholder="John" value="John">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="modalLastName" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="modalLastName" placeholder="Doe" value="Doe">
+                        </div>
+                    </div>
+
                     <div class="mb-3">
-                        <label for="modalInput" class="form-label">Enter text in modal:</label>
-                        <input type="text" class="form-control" id="modalInput" placeholder="Type something...">
+                        <label for="modalEmail" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="modalEmail" placeholder="john.doe@example.com"
+                            value="john.doe@example.com">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="modalRole" class="form-label">User Role</label>
+                        <select class="form-select" id="modalRole">
+                            <option value="admin">Administrator</option>
+                            <option value="tester" selected>QA Tester</option>
+                            <option value="developer">Developer</option>
+                            <option value="viewer">Viewer</option>
+                        </select>
+                    </div>
+
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="modalNotifications" checked>
+                        <label class="form-check-label" for="modalNotifications">Send email notifications for test
+                            results</label>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="modalActionBtn">Perform Action</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="modalSaveBtn">
+                        <i class="bi bi-save"></i> Save Changes
+                    </button>
+                    <button type="button" class="btn btn-success" id="modalActionBtn">Apply & Close</button>
                 </div>
             </div>
         </div>
@@ -412,239 +636,504 @@
 
     <script>
         // Wait for DOM to be fully loaded
-        $(document).ready(function() {
-            
-            // Initialize table with sample data
+        $(document).ready(function () {
+            // Generate session ID and record load time
+            const sessionId = 'SEL-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+            const loadTime = performance.now().toFixed(0);
+            $('#sessionId').text(sessionId);
+            $('#loadTime').text(loadTime);
+
+            // Initialize table with realistic data
             initializeTable();
-            
-            // Form submission handler
-            $('#registrationForm').on('submit', function(e) {
+
+            // Enhanced form submission handler with realistic validation
+            $('#registrationForm').on('submit', function (e) {
                 e.preventDefault();
-                
-                // Basic validation
+
+                // Enhanced validation
                 let isValid = true;
-                
-                // Name validation
-                if ($('#name').val().trim() === '') {
+
+                // Name validation (realistic: 2-50 chars, only letters and spaces)
+                const name = $('#name').val().trim();
+                const nameRegex = /^[A-Za-z\s]{2,50}$/;
+                if (!nameRegex.test(name)) {
                     $('#name').addClass('is-invalid');
+                    $('#nameError').text('Name must be 2-50 characters and contain only letters and spaces.');
                     isValid = false;
                 } else {
                     $('#name').removeClass('is-invalid');
                 }
-                
-                // Email validation
+
+                // Email validation (realistic pattern)
                 const email = $('#email').val();
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
                 if (!emailRegex.test(email)) {
                     $('#email').addClass('is-invalid');
+                    $('#emailError').text('Please enter a valid email address (e.g., name@company.com).');
                     isValid = false;
                 } else {
                     $('#email').removeClass('is-invalid');
                 }
-                
-                // Password validation
-                if ($('#password').val().length < 6) {
+
+                // Password validation (realistic: min 8 chars, 1 uppercase, 1 number)
+                const password = $('#password').val();
+                const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+                if (!passwordRegex.test(password)) {
                     $('#password').addClass('is-invalid');
+                    $('#passwordError').text('Password must be at least 8 characters with 1 uppercase letter and 1 number.');
                     isValid = false;
                 } else {
                     $('#password').removeClass('is-invalid');
                 }
-                
+
+                // Country validation
+                if ($('#country').val() === '') {
+                    $('#country').addClass('is-invalid');
+                    isValid = false;
+                } else {
+                    $('#country').removeClass('is-invalid');
+                }
+
                 if (!isValid) {
+                    showToast('Validation Error', 'Please correct the highlighted fields and try again.', 'danger');
                     return;
                 }
-                
-                // Collect form data
+
+                // Collect form data with realistic structure
                 const formData = {
-                    name: $('#name').val(),
-                    email: $('#email').val(),
-                    password: $('#password').val(),
-                    gender: $('input[name="gender"]:checked').val() || 'Not specified',
+                    name: name,
+                    email: email,
+                    password: '••••••••', // Masked for display
+                    gender: $('input[name="gender"]:checked').val() || 'prefer-not-to-say',
                     interests: [],
-                    country: $('#country').val()
+                    country: $('#country option:selected').text(),
+                    countryCode: $('#country').val(),
+                    experience: $('#experience').val(),
+                    registrationDate: new Date().toISOString().split('T')[0],
+                    accountType: 'Standard',
+                    userId: 'USER-' + Math.random().toString(36).substr(2, 8).toUpperCase()
                 };
-                
+
                 // Collect checked interests
-                $('input[type="checkbox"]:checked').each(function() {
-                    formData.interests.push($(this).val());
+                $('input[type="checkbox"]:checked').each(function () {
+                    formData.interests.push($(this).next('label').text());
                 });
-                
+
                 if (formData.interests.length === 0) {
-                    formData.interests.push('None selected');
+                    formData.interests.push('No specific interests selected');
                 }
-                
-                // Display results
+
+                // Display results in a realistic format
                 $('#formResultsPlaceholder').addClass('d-none');
                 $('#formResults').removeClass('d-none');
-                
+
                 // Clear previous results
                 $('#resultsList').empty();
-                
-                // Add results to list
-                for (const key in formData) {
+
+                // Add results with realistic field labels
+                const fieldLabels = {
+                    name: 'Full Name',
+                    email: 'Email Address',
+                    gender: 'Gender',
+                    interests: 'Technical Interests',
+                    country: 'Country',
+                    experience: 'Experience Level',
+                    accountType: 'Account Type',
+                    userId: 'User ID'
+                };
+
+                const displayOrder = ['userId', 'name', 'email', 'gender', 'country', 'experience', 'interests', 'accountType'];
+
+                displayOrder.forEach(key => {
                     let value = formData[key];
                     if (Array.isArray(value)) {
                         value = value.join(', ');
                     }
-                    
+
                     $('#resultsList').append(`
-                        <li class="list-group-item d-flex justify-content-between">
-                            <span class="font-weight-bold">${key.charAt(0).toUpperCase() + key.slice(1)}:</span>
-                            <span>${value}</span>
-                        </li>
+                        <tr>
+                            <td class="fw-bold" style="width: 40%">${fieldLabels[key]}:</td>
+                            <td>${value}</td>
+                        </tr>
                     `);
-                }
-                
+                });
+
                 // Show success message
-                const successMsg = `Registration successful! Welcome, ${formData.name}.`;
-                $('#successMessage').text(successMsg);
-                
-                // Add to table
-                addTableRow(formData);
-                
+                const successMsg = `Registration successful! Account ${formData.userId} has been created for ${formData.name}. A confirmation email has been sent to ${formData.email}.`;
+                $('#successText').text(successMsg);
+                $('#timestamp').text(new Date().toLocaleString());
+
+                // Add to user table
+                addTableRow({
+                    name: formData.name,
+                    email: formData.email,
+                    department: getRandomDepartment(),
+                    location: formData.country,
+                    status: 'Pending',
+                    joinDate: new Date().toISOString().split('T')[0]
+                });
+
                 // Show toast notification
-                showToast('Registration Successful', `User ${formData.name} has been registered.`, 'success');
-                
+                showToast('Account Created', `User ${formData.name} registered successfully.`, 'success');
+
                 // Reset form
                 $('#registrationForm')[0].reset();
+                $('#experience').val('3-5'); // Reset to default
+                $('input[name="gender"][value="male"]').prop('checked', true);
+                $('#webAutomation').prop('checked', true);
             });
-            
-            // Load dynamic content
-            $('#loadContentBtn').on('click', function() {
-                const content = `
+
+            // Load dynamic content with realistic data
+            $('#loadContentBtn').on('click', function () {
+                const users = [
+                    { name: 'Alex Johnson', role: 'Senior QA Engineer', lastActive: '2 hours ago' },
+                    { name: 'Maria Garcia', role: 'Automation Specialist', lastActive: '30 minutes ago' },
+                    { name: 'David Chen', role: 'Test Manager', lastActive: '1 day ago' },
+                    { name: 'Sarah Williams', role: 'Performance Analyst', lastActive: 'Active now' }
+                ];
+
+                let content = `
                     <div class="alert alert-success">
-                        <h6>Content Loaded Successfully!</h6>
-                        <p>This content was loaded dynamically at ${new Date().toLocaleTimeString()}.</p>
-                        <p>You can test dynamic content loading with Selenium.</p>
+                        <h6><i class="bi bi-people"></i> User Data Loaded</h6>
+                        <p>Loaded ${users.length} active users at ${new Date().toLocaleTimeString()}</p>
                     </div>
-                    <div class="d-grid gap-2">
-                        <button class="btn btn-outline-success" id="dynamicBtn">Dynamic Button</button>
-                        <button class="btn btn-outline-info" id="anotherDynamicBtn">Another Dynamic Button</button>
+                    <div class="list-group">
+                `;
+
+                users.forEach(user => {
+                    content += `
+                        <div class="list-group-item">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1">${user.name}</h6>
+                                <small>${user.lastActive}</small>
+                            </div>
+                            <p class="mb-1">${user.role}</p>
+                        </div>
+                    `;
+                });
+
+                content += `</div>`;
+
+                $('#dynamicContent').html(content);
+                showToast('Data Loaded', `Loaded ${users.length} user records.`, 'info');
+            });
+
+            // Load products data
+            $('#loadProductsBtn').on('click', function () {
+                const products = [
+                    { name: 'Selenium WebDriver', version: '4.11.0', status: 'Stable' },
+                    { name: 'TestNG Framework', version: '7.8.0', status: 'Stable' },
+                    { name: 'JUnit 5', version: '5.10.0', status: 'Latest' },
+                    { name: 'Cucumber BDD', version: '7.14.0', status: 'Beta' }
+                ];
+
+                let content = `
+                    <div class="alert alert-info">
+                        <h6><i class="bi bi-box"></i> Testing Tools Inventory</h6>
+                        <p>Loaded ${products.length} products at ${new Date().toLocaleTimeString()}</p>
+                    </div>
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Tool</th>
+                                <th>Version</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+
+                products.forEach(product => {
+                    const statusClass = product.status === 'Stable' ? 'badge bg-success' :
+                        product.status === 'Latest' ? 'badge bg-primary' : 'badge bg-warning';
+                    content += `
+                        <tr>
+                            <td>${product.name}</td>
+                            <td>${product.version}</td>
+                            <td><span class="${statusClass}">${product.status}</span></td>
+                        </tr>
+                    `;
+                });
+
+                content += `</tbody></table>`;
+
+                $('#dynamicContent').html(content);
+                showToast('Inventory Loaded', 'Testing tools inventory has been updated.', 'info');
+            });
+
+            // Open dynamic modal
+            $('#openDynamicModal').on('click', function () {
+                const modalId = 'dynamicModal-' + Date.now();
+                const modalHtml = `
+                    <div class="modal fade" id="${modalId}" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Dynamic Modal #${modalId.substr(-4)}</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>This modal was generated dynamically at ${new Date().toLocaleTimeString()}.</p>
+                                    <p>Dynamic modals are useful for testing modal creation and destruction scenarios.</p>
+                                    <div class="mb-3">
+                                        <label class="form-label">Dynamic Input Field</label>
+                                        <input type="text" class="form-control" placeholder="Enter text for testing">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" id="dynamicModalAction">Action</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 `;
-                
-                $('#dynamicContent').html(content);
-                
-                // Add event handlers to dynamically created buttons
-                $(document).on('click', '#dynamicBtn', function() {
-                    showToast('Dynamic Button Clicked', 'You clicked a dynamically created button!', 'info');
+
+                $('body').append(modalHtml);
+                const modal = new bootstrap.Modal(document.getElementById(modalId));
+                modal.show();
+
+                // Clean up modal after it's hidden
+                $('#' + modalId).on('hidden.bs.modal', function () {
+                    $(this).remove();
                 });
-                
-                $(document).on('click', '#anotherDynamicBtn', function() {
-                    $('#dynamicContent').append('<div class="alert alert-info mt-2">Another action performed!</div>');
+
+                // Handle dynamic modal action
+                $(document).on('click', '#dynamicModalAction', function () {
+                    showToast('Dynamic Action', 'Action performed in dynamic modal.', 'success');
+                    modal.hide();
                 });
             });
-            
+
+            // Modal save button
+            $('#modalSaveBtn').on('click', function () {
+                const firstName = $('#modalFirstName').val();
+                const lastName = $('#modalLastName').val();
+                const role = $('#modalRole option:selected').text();
+
+                showToast('Changes Saved', `Updated ${firstName} ${lastName} to ${role} role.`, 'success');
+                $('#exampleModal').modal('hide');
+            });
+
             // Modal action button
-            $('#modalActionBtn').on('click', function() {
-                const inputText = $('#modalInput').val();
-                if (inputText) {
-                    showToast('Modal Action', `You entered: "${inputText}"`, 'primary');
-                    $('#exampleModal').modal('hide');
-                } else {
-                    alert('Please enter some text in the modal input field.');
-                }
+            $('#modalActionBtn').on('click', function () {
+                const firstName = $('#modalFirstName').val();
+                const email = $('#modalEmail').val();
+                const notifications = $('#modalNotifications').is(':checked') ? 'enabled' : 'disabled';
+
+                showToast('Configuration Applied', `Settings applied for ${firstName}. Email notifications: ${notifications}.`, 'info');
+                $('#exampleModal').modal('hide');
             });
-            
-            // Show random alert
-            $('#showRandomAlert').on('click', function() {
-                const alerts = ['primary', 'success', 'warning', 'danger', 'info'];
+
+            // Show random alert with realistic messages
+            $('#showRandomAlert').on('click', function () {
+                const alerts = [
+                    { type: 'primary', title: 'Information', message: 'System backup completed successfully.' },
+                    { type: 'success', title: 'Success', message: 'Test suite execution completed with 100% pass rate.' },
+                    { type: 'warning', title: 'Warning', message: 'High memory usage detected on server node 2.' },
+                    { type: 'danger', title: 'Critical', message: 'Database replication lag exceeds 5 minutes.' },
+                    { type: 'info', title: 'Update', message: 'New test cases have been added to the regression suite.' }
+                ];
+
                 const randomAlert = alerts[Math.floor(Math.random() * alerts.length)];
-                
+                const icon = {
+                    'primary': 'bi-info-circle',
+                    'success': 'bi-check-circle',
+                    'warning': 'bi-exclamation-triangle',
+                    'danger': 'bi-x-circle',
+                    'info': 'bi-bell'
+                }[randomAlert.type];
+
                 const alertHtml = `
-                    <div class="alert alert-${randomAlert} alert-dismissible fade show" role="alert">
-                        This is a random ${randomAlert} alert generated at ${new Date().toLocaleTimeString()}
+                    <div class="alert alert-${randomAlert.type} alert-dismissible fade show" role="alert">
+                        <i class="bi ${icon}"></i> <strong>${randomAlert.title}:</strong> ${randomAlert.message}
                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>
                 `;
-                
-                // Add alert to the alerts card
-                $(this).before(alertHtml);
+
+                $(this).parent().before(alertHtml);
+                showToast('Alert Generated', `New ${randomAlert.type} alert created.`, randomAlert.type);
             });
-            
-            // Show toast button
-            $('#showToastBtn').on('click', function() {
-                const toastTypes = ['primary', 'success', 'warning', 'danger', 'info', 'dark'];
-                const randomType = toastTypes[Math.floor(Math.random() * toastTypes.length)];
-                const titles = ['Notification', 'Update', 'Alert', 'Message', 'Info'];
-                const randomTitle = titles[Math.floor(Math.random() * titles.length)];
-                
-                showToast(randomTitle, `This is a ${randomType} toast notification.`, randomType);
+
+            // Dismiss all alerts
+            $('#dismissAllAlerts').on('click', function () {
+                $('.alert-dismissible .btn-close').click();
+                showToast('Alerts Cleared', 'All dismissible alerts have been closed.', 'info');
             });
-            
+
+            // Show toast with realistic notifications
+            $('#showToastBtn').on('click', function () {
+                const notifications = [
+                    { type: 'info', title: 'New Assignment', message: 'You have been assigned to test the checkout workflow.' },
+                    { type: 'success', title: 'Deployment Complete', message: 'Version 2.3.1 has been deployed to production.' },
+                    { type: 'warning', title: 'Approval Required', message: '3 test cases require your review and approval.' },
+                    { type: 'danger', title: 'Build Failed', message: 'Nightly build #2431 failed due to test failures.' },
+                    { type: 'primary', title: 'Meeting Reminder', message: 'Sprint planning meeting in 15 minutes.' }
+                ];
+
+                const randomNotif = notifications[Math.floor(Math.random() * notifications.length)];
+                showToast(randomNotif.title, randomNotif.message, randomNotif.type);
+            });
+
             // Show all toasts button
-            $('#showAllToastsBtn').on('click', function() {
-                // Show existing toasts
+            $('#showAllToastsBtn').on('click', function () {
                 $('.toast').toast('show');
-                
-                // Also show a new one
-                showToast('All Toasts Activated', 'All toast notifications are now visible.', 'info');
+                showToast('Notifications', 'All notifications are now visible.', 'info');
             });
-            
-            // Add table row button
-            $('#addRowBtn').on('click', function() {
-                const names = ['Alex Johnson', 'Maria Garcia', 'David Smith', 'Lisa Wang', 'Robert Brown'];
-                const emails = ['alex@test.com', 'maria@test.com', 'david@test.com', 'lisa@test.com', 'robert@test.com'];
-                const countries = ['United States', 'United Kingdom', 'Canada', 'Australia', 'India'];
-                const statuses = ['Active', 'Inactive', 'Pending'];
-                
-                const randomIndex = Math.floor(Math.random() * names.length);
-                
+
+            // Export table data
+            $('#exportTableBtn').on('click', function () {
+                const rowCount = $('#userTable tr').length;
+                showToast('Export Started', `Preparing CSV export of ${rowCount} user records...`, 'info');
+
+                // Simulate export delay
+                setTimeout(() => {
+                    showToast('Export Complete', `user_data_${new Date().toISOString().split('T')[0]}.csv downloaded successfully.`, 'success');
+                }, 1500);
+            });
+
+            // Add realistic table row
+            $('#addRowBtn').on('click', function () {
+                const firstNames = ['James', 'Mary', 'Robert', 'Patricia', 'John', 'Jennifer', 'Michael', 'Linda'];
+                const lastNames = ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis'];
+                const departments = ['Engineering', 'Quality Assurance', 'Product Management', 'DevOps', 'Support'];
+                const locations = ['New York', 'London', 'Toronto', 'Sydney', 'Berlin', 'Tokyo', 'Singapore'];
+
+                const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+                const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+                const email = `${firstName.toLowerCase()}.${lastName.toLowerCase()}@company.com`;
+
                 const newRow = {
-                    name: names[randomIndex],
-                    email: emails[randomIndex],
-                    country: countries[Math.floor(Math.random() * countries.length)],
-                    status: statuses[Math.floor(Math.random() * statuses.length)]
+                    name: `${firstName} ${lastName}`,
+                    email: email,
+                    department: departments[Math.floor(Math.random() * departments.length)],
+                    location: locations[Math.floor(Math.random() * locations.length)],
+                    status: Math.random() > 0.3 ? 'Active' : 'Pending',
+                    joinDate: randomPastDate(365)
                 };
-                
+
                 addTableRow(newRow);
-                showToast('Row Added', `Added ${newRow.name} to the table.`, 'success');
+                showToast('User Added', `Added ${newRow.name} to the user management system.`, 'success');
             });
-            
+
             // Clear table button
-            $('#clearTableBtn').on('click', function() {
-                if ($('#userTable tr').length > 0) {
-                    $('#userTable').empty();
-                    updateRowCount();
-                    showToast('Table Cleared', 'All rows have been removed from the table.', 'warning');
+            $('#clearTableBtn').on('click', function () {
+                const rowCount = $('#userTable tr').length;
+                if (rowCount > 0) {
+                    if (confirm(`Are you sure you want to remove all ${rowCount} users from the table? This action cannot be undone.`)) {
+                        $('#userTable').empty();
+                        updateRowCount();
+                        showToast('Table Cleared', `All ${rowCount} users have been removed.`, 'warning');
+                    }
+                } else {
+                    showToast('No Data', 'The table is already empty.', 'info');
                 }
             });
-            
-            // Reset page button
-            $('#resetPageBtn').on('click', function() {
-                // Reset form
-                $('#registrationForm')[0].reset();
-                $('.form-control').removeClass('is-invalid');
-                
-                // Reset form results
-                $('#formResultsPlaceholder').removeClass('d-none');
-                $('#formResults').addClass('d-none');
-                
-                // Reset dynamic content
-                $('#dynamicContent').html('<div class="alert alert-secondary">Content will appear here.</div>');
-                
-                // Reset table
-                $('#userTable').empty();
-                initializeTable();
-                
-                // Close all toasts
-                $('.toast').toast('hide');
-                
-                // Show confirmation toast
-                showToast('Page Reset', 'The page has been reset to its initial state.', 'info');
+
+            // Table search functionality
+            $('#tableSearch').on('keyup', function () {
+                const searchTerm = $(this).val().toLowerCase();
+                $('#userTable tr').filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(searchTerm) > -1);
+                });
+                updateRowCount();
             });
-            
+
+            // Status filter
+            $('#statusFilter').on('change', function () {
+                const status = $(this).val();
+                if (status === '') {
+                    $('#userTable tr').show();
+                } else {
+                    $('#userTable tr').each(function () {
+                        const rowStatus = $(this).find('td:nth-child(6)').text();
+                        $(this).toggle(rowStatus === status);
+                    });
+                }
+                updateRowCount();
+            });
+
+            // Simulate error button
+            $('#simulateErrorBtn').on('click', function () {
+                showToast('Server Error', 'HTTP 500: Internal server error. Could not connect to database.', 'danger');
+
+                // Add error alert
+                const alertHtml = `
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <i class="bi bi-database-exclamation"></i> <strong>Database Connection Error:</strong> Failed to establish connection to primary database cluster.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                `;
+
+                $('#showRandomAlert').parent().before(alertHtml);
+            });
+
+            // Show session info
+            $('#showSessionInfo').on('click', function () {
+                const info = `
+                    <strong>Session Information:</strong><br>
+                    • Session ID: ${sessionId}<br>
+                    • Page Load Time: ${loadTime}ms<br>
+                    • User Agent: ${navigator.userAgent.substring(0, 50)}...<br>
+                    • Current Time: ${new Date().toLocaleString()}<br>
+                    • Table Records: ${$('#userTable tr').length}
+                `;
+
+                showToast('Session Details', info, 'info', 10000);
+            });
+
+            // Reset page button
+            $('#resetPageBtn').on('click', function () {
+                if (confirm('Reset the entire application state? This will clear all forms, tables, and notifications.')) {
+                    // Reset form
+                    $('#registrationForm')[0].reset();
+                    $('.form-control').removeClass('is-invalid');
+                    $('#experience').val('3-5');
+                    $('input[name="gender"][value="male"]').prop('checked', true);
+                    $('#webAutomation').prop('checked', true);
+
+                    // Reset form results
+                    $('#formResultsPlaceholder').removeClass('d-none');
+                    $('#formResults').addClass('d-none');
+
+                    // Reset dynamic content
+                    $('#dynamicContent').html('<div class="alert alert-secondary"><i class="bi bi-arrow-clockwise"></i> Content will be loaded here dynamically.</div>');
+
+                    // Reset table
+                    $('#userTable').empty();
+                    initializeTable();
+                    $('#tableSearch').val('');
+                    $('#statusFilter').val('');
+
+                    // Close all toasts and alerts
+                    $('.toast').toast('hide');
+                    $('.alert-dismissible .btn-close').click();
+
+                    // Show confirmation toast
+                    showToast('Application Reset', 'All application state has been reset to initial conditions.', 'info');
+                }
+            });
+
             // Initialize Bootstrap toasts
             $('.toast').toast();
-            
+
             // Helper function to show toast notifications
-            function showToast(title, message, type = 'info') {
+            function showToast(title, message, type = 'info', delay = 5000) {
                 const toastId = 'toast-' + Date.now();
+                const icon = {
+                    'primary': 'bi-info-circle',
+                    'success': 'bi-check-circle',
+                    'warning': 'bi-exclamation-triangle',
+                    'danger': 'bi-x-circle',
+                    'info': 'bi-bell'
+                }[type] || 'bi-bell';
+
                 const toastHtml = `
-                    <div class="toast" role="alert" id="${toastId}" data-bs-delay="5000">
+                    <div class="toast" role="alert" id="${toastId}" data-bs-delay="${delay}">
                         <div class="toast-header bg-${type} text-white">
+                            <i class="bi ${icon} me-2"></i>
                             <strong class="me-auto">${title}</strong>
-                            <small>${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</small>
+                            <small>${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</small>
                             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
                         </div>
                         <div class="toast-body">
@@ -652,53 +1141,62 @@
                         </div>
                     </div>
                 `;
-                
+
                 $('#toastContainer').append(toastHtml);
                 const toastElement = document.getElementById(toastId);
                 const toast = new bootstrap.Toast(toastElement);
                 toast.show();
-                
+
                 // Remove toast from DOM after it's hidden
-                toastElement.addEventListener('hidden.bs.toast', function() {
+                toastElement.addEventListener('hidden.bs.toast', function () {
                     this.remove();
                 });
             }
-            
-            // Helper function to initialize the table
+
+            // Helper function to initialize the table with realistic data
             function initializeTable() {
                 const initialData = [
-                    {name: 'John Doe', email: 'john@test.com', country: 'United States', status: 'Active'},
-                    {name: 'Jane Smith', email: 'jane@test.com', country: 'Canada', status: 'Active'},
-                    {name: 'Sam Wilson', email: 'sam@test.com', country: 'United Kingdom', status: 'Inactive'}
+                    { name: 'John Anderson', email: 'john.anderson@company.com', department: 'Engineering', location: 'San Francisco', status: 'Active', joinDate: '2023-01-15' },
+                    { name: 'Sarah Miller', email: 'sarah.miller@company.com', department: 'Quality Assurance', location: 'New York', status: 'Active', joinDate: '2023-02-20' },
+                    { name: 'Robert Chen', email: 'robert.chen@company.com', department: 'Product Management', location: 'Toronto', status: 'Active', joinDate: '2023-03-10' },
+                    { name: 'Emily Watson', email: 'emily.watson@company.com', department: 'DevOps', location: 'London', status: 'Inactive', joinDate: '2023-01-30' },
+                    { name: 'Michael Brown', email: 'michael.brown@company.com', department: 'Support', location: 'Sydney', status: 'Pending', joinDate: '2023-04-05' }
                 ];
-                
+
                 initialData.forEach(data => addTableRow(data, false));
                 updateRowCount();
             }
-            
+
             // Helper function to add a row to the table
             function addTableRow(data, animate = true) {
                 const rowCount = $('#userTable tr').length + 1;
-                const statusClass = data.status === 'Active' ? 'text-success' : 
-                                  data.status === 'Inactive' ? 'text-danger' : 'text-warning';
-                
+                const userId = 'UID-' + rowCount.toString().padStart(4, '0');
+                const statusClass = data.status === 'Active' ? 'badge bg-success' :
+                    data.status === 'Inactive' ? 'badge bg-danger' : 'badge bg-warning';
+
                 const rowHtml = `
                     <tr ${animate ? 'class="table-primary"' : ''}>
-                        <th scope="row">${rowCount}</th>
+                        <td><small class="text-muted">${userId}</small></td>
                         <td>${data.name}</td>
-                        <td>${data.email}</td>
-                        <td>${data.country}</td>
-                        <td class="${statusClass}">${data.status}</td>
+                        <td><a href="mailto:${data.email}">${data.email}</a></td>
+                        <td>${data.department}</td>
+                        <td>${data.location}</td>
+                        <td><span class="${statusClass}">${data.status}</span></td>
+                        <td>${data.joinDate}</td>
                         <td>
-                            <button class="btn btn-sm btn-outline-primary edit-row">Edit</button>
-                            <button class="btn btn-sm btn-outline-danger delete-row">Delete</button>
+                            <button class="btn btn-sm btn-outline-primary edit-row me-1">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger delete-row">
+                                <i class="bi bi-trash"></i>
+                            </button>
                         </td>
                     </tr>
                 `;
-                
+
                 $('#userTable').append(rowHtml);
                 updateRowCount();
-                
+
                 // Remove highlight after animation
                 if (animate) {
                     setTimeout(() => {
@@ -706,46 +1204,62 @@
                     }, 1000);
                 }
             }
-            
+
             // Helper function to update row count
             function updateRowCount() {
-                const count = $('#userTable tr').length;
-                $('#rowCount').text(count);
+                const visibleRows = $('#userTable tr:visible').length;
+                const totalRows = $('#userTable tr').length;
+                $('#rowCount').text(visibleRows);
+                $('#totalRows').text(totalRows);
             }
-            
+
+            // Helper function to get random department
+            function getRandomDepartment() {
+                const departments = ['Engineering', 'Quality Assurance', 'Product', 'DevOps', 'Support', 'Sales', 'Marketing'];
+                return departments[Math.floor(Math.random() * departments.length)];
+            }
+
+            // Helper function to generate random past date
+            function randomPastDate(daysBack) {
+                const date = new Date();
+                date.setDate(date.getDate() - Math.floor(Math.random() * daysBack));
+                return date.toISOString().split('T')[0];
+            }
+
             // Event delegation for table buttons (since rows are added dynamically)
-            $(document).on('click', '.edit-row', function() {
+            $(document).on('click', '.edit-row', function () {
                 const row = $(this).closest('tr');
                 const name = row.find('td:nth-child(2)').text();
-                showToast('Edit Row', `Editing row for ${name}.`, 'info');
-                
+                const userId = row.find('td:nth-child(1)').text();
+
+                showToast('Edit Mode', `Editing user ${name} (${userId}).`, 'info');
+
                 // In a real app, you would open a modal or form to edit the row
                 row.addClass('table-warning');
                 setTimeout(() => {
                     row.removeClass('table-warning');
                 }, 2000);
             });
-            
-            $(document).on('click', '.delete-row', function() {
+
+            $(document).on('click', '.delete-row', function () {
                 const row = $(this).closest('tr');
                 const name = row.find('td:nth-child(2)').text();
-                
+                const userId = row.find('td:nth-child(1)').text();
+
                 row.addClass('table-danger');
-                
-                if (confirm(`Are you sure you want to delete ${name}?`)) {
-                    row.fadeOut(400, function() {
+
+                if (confirm(`Delete user ${name} (${userId})? This action will permanently remove the user from the system.`)) {
+                    row.fadeOut(400, function () {
                         $(this).remove();
                         updateRowCount();
-                        showToast('Row Deleted', `${name} has been removed from the table.`, 'danger');
+                        showToast('User Deleted', `${name} has been removed from the user management system.`, 'danger');
                     });
                 } else {
                     row.removeClass('table-danger');
                 }
             });
-            
-            // Initialize tooltips (if needed)
-            $('[data-bs-toggle="tooltip"]').tooltip();
         });
     </script>
 </body>
+
 </html>
